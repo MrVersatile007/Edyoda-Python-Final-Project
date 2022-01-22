@@ -3,7 +3,7 @@
 
 class Restaurant:
     
-    def __init__(self, name):                       # index as ID, Food Name,  Quantity,  Discount,   Price,   Stock
+    def __init__(self, name):                       # ID, Food Name,  Quantity,  Discount,   Price,   Stock
         self.name=name
         self.food={1: {'Name': 'Chicken BiryanI', 'Quantity': 1, 'Price': 350.0, 'Discount': 80.0, 'Stock': 7.0}, 
                    2: {'Name': 'Kadia Chicken', 'Quantity': 5.0, 'Price': 200.0, 'Discount': 70.0, 'Stock': 6.0},
@@ -20,7 +20,7 @@ class Restaurant:
         self.food_ID=len(self.food)+1
         self.user_details={1: {"User Name" : "Tarun Teja", "Phone No." : 7780536616, "Email_ID" : 'tarun@dummy.com', 'Password' : 'FREE FOOD', 'Address' : "Hyderabad"},
                            2: {"User Name" : "Pratyush", "Phone No." : 1234567890, "Email_ID" : 'pratyush@dummy.com', 'Password' : 'FREE FOOD', 'Address' : "Hyderabad"}}
-        self.admin_details={1: {"User Name" : "Tarun Teja", "Phone No." : 7780536616, "Email_ID" : 'tarun@dummy.com', 'Password' : 'FREE FOOD', 'Address' : "Hyderabad"}}
+        self.admin_details={1: {"Admin Name" : "Tarun Teja", "Phone No." : 7780536616, "Email_ID" : 'tarun@dummy.com', 'Password' : 'FREE FOOD', 'Address' : "Hyderabad"}}
         
         self.ordered_item = []
         self.iterator=1
@@ -97,8 +97,6 @@ class Restaurant:
                                                     "\t(4) UPDATE FOOD DISCOUNT\n"
                                                     "\t(5) UPDATE FOOD STOCK\n"
                                                     "\t(6) GO BACK\n"+ "_" * 72)
-                
-                print("1. Update Food Name\n2. Update Quantity\n3. Update Price\n4. Update Discount\n5. Update Stock \n")
                 y= input("Enter the number only : ")
                 if y=="1":
                     self.food[x]["Name"]=input("Updated Food name : ")
@@ -158,10 +156,10 @@ class Restaurant:
             print("\n!! Something went wrong please try again !!\n")
                 
                 
-    # user functionalities
+    # USER FUNCTIONALIITY
                    
         
-    def user_register(self):                      #User DF:    Username,  Phone no,   email,    Pass,   Address   
+    def user_register(self):                      #User :    Username,  Phone no,   email,    Pass,   Address   
         try:
             i = len(self.user_details)
             while i >0:
@@ -177,14 +175,12 @@ class Restaurant:
                         break
                         
                     else:
-                        self.user_details[i]={"User Name":user_name,"Phone No.":phone_no,"Email_ID":email,"Password":password,"Address":address}
-                        i+=1
+                        self.user_details[len(self.user_details)]={"User Name":user_name,"Phone No.":phone_no,"Email_ID":email,"Password":password,"Address":address}
                         print("\n!! Your Account is Created Successfully !!\n")
                         print(f"Welcome TO {self.name} Restaurant\n")
                         print("*"*30,"USER DETAILS", "*"*25)
-                        for i in self.user_details:
-                            for j in self.user_details[i]:
-                                print(j, ":", self.user_details[i][j])
+                        for i in self.user_details[len(self.user_details)]:
+                            print(i, ":", self.user_details[len(self.user_details)][i])
                         break
                 break
         except Exception as e:
@@ -255,7 +251,7 @@ class Restaurant:
                             print("We Don't have this Food Item : ",z)
                             print(" Also make sure you include 'COMMAS' ! \for example: 1, 5, 9, 4'")
                             break
-                    print("*"*25,"YOUR ORDER ", "*"*20, "\n"*2)
+                    print("\n\n","*"*25,"YOUR ORDER ", "*"*20, "\n")
                     for i in self.ordered_item:
                         print("\n\n", i[0],"\t", i[1], " "*(20 - len(i[1])), i[2], "\t", i[3])
                         payment+= i[3]- i[4]
@@ -340,7 +336,7 @@ try:
         instance= Restaurant("TARUN'S PARAD1SE")
         print("*" * 28, "WELCOME TO", instance.name, "*" * 24, "\n")
         while True:
-            print("*" * 31 + "MAIN MENU" + "*" * 32 + "\n"
+            print("\n\n\n","*" * 31 + "MAIN MENU" + "*" * 32 + "\n\n\n"
                                                   "\t(1) ADMIN\n"
                                                   "\t(2) USER\n"
                                                   "\t(3) EXIT\n" + "_" * 72)
@@ -350,7 +346,7 @@ try:
                 instance.admin_login()
             elif x=="2":
                 while True:
-                    print("*" * 31 + "USER PAGE" + "*" * 31 + "\n"
+                    print("\n\n"*2,"*" * 31 + "USER PAGE" + "*" * 31 + "\n\n"
                                                     "\t(1) CREATE ACCOUNT \n"
                                                     "\t(2) LOGIN \n"
                                                     "\t(3) EXIT\n"+ "_" * 72)
@@ -376,4 +372,4 @@ except Exception as e:
 if __name__=='__main__':
     main()
 
-print("\n\nTHANK YOU EVERYONE !!\n\n")
+print("\n\nTHANK YOU EVERYONE !!") 
